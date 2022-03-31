@@ -1,0 +1,119 @@
+<asset-wrapper id="0">
+   <meta-data id="1" os="Mac OS X 10.16" date="Thu Mar 31 14:13:46 EDT 2022">
+      <version id="2" major="8" minor="0" patch="1" type="Release" secondary="1" changeset="d7f419725c57b60df1e6a0f789237f447634a745" date="2022-02-24T08:34:48.647838" revision="0"/>
+   </meta-data>
+   <mark class="com.tilia.core.marks.ScriptMarkAsset" id="3" unique-id="d0d60e8b-db2c-4e97-b8e9-316e4566447d" name="derived-sheet-mark" created-by="Phoenix" created-on="2022-03-31T14:12:27.126-04:00" modified-by="Phoenix" modified-on="2022-03-31T14:13:34.546-04:00" version="23645401-73eb-4bcc-bd57-7f37aa6328ea" edit="true" move="true" delete="true" hidden="false" rules-are-global="false" built-in-path="false" markPage="1" anchor="plate" overprint="true" overprint-mode="Standard" underprint="None" dynamic-custom-mark="false" dynamic-keyword-mapping="false" ignore-technical-inks="true" ignore-varnish-inks="true" pdf-box="TrimBox" clip-option="None" clip-left="0mm" clip-right="0mm" clip-top="0mm" clip-bottom="0mm" x-scale="1.0" y-scale="1.0" layer-name="" double-sided="None">
+      <properties id="4">
+         <map id="5"/>
+      </properties>
+      <rules id="6">
+         <rule id="7" unique-id="b284c8c5-af2a-44d7-adb1-e4ceef90d8ec" rotation="0.0" rotation-type="in-place">
+            <x id="8" type="XValue" xpoint="Left" ypoint="Bottom" formula="plate.x+0&quot;"/>
+            <y id="9" type="YValue" xpoint="Left" ypoint="Bottom" formula="plate.y+0&quot;"/>
+            <xscale id="10">1.0</xscale>
+            <yscale id="11">1.0</yscale>
+         </rule>
+      </rules>
+      <underprint-color id="12" type="Composite">
+         <components class="java.util.ArrayList" id="13">
+            <component id="14" type="Ink" placeholder-index="0">
+               <ink id="15" refid="b0842956-d58d-4ef0-a521-1d78dfec9a80" type="com.tilia.core.color.TInk"/>
+               <tint id="16">1.0</tint>
+            </component>
+         </components>
+      </underprint-color>
+      <underprint-margins id="17" type="Outside" linked="false">
+         <left id="18">0pt</left>
+         <top id="19">0pt</top>
+         <right id="20">0pt</right>
+         <bottom id="21">0pt</bottom>
+      </underprint-margins>
+      <ink-mappings class="java.util.LinkedList" id="22"/>
+      <keyword-mappings class="java.util.LinkedList" id="23"/>
+      <place-below id="24">false</place-below>
+      <script id="25" refid="f40b73b0-c560-4c89-bcb9-97920e4e69a0" type="com.tilia.core.scripting.ScriptAsset">
+         <frozen-asset class="com.tilia.core.scripting.ScriptAsset" id="26" unique-id="a0a53ffb-a41f-41dd-b018-42cae7ee1446" created-on="2022-03-31T14:13:34.493-04:00" version="7fea4013-8f62-4ee9-8de1-e614c6e89ad2" edit="true" move="true" delete="true" hidden="false" context="None">
+            <properties id="27">
+               <map id="28"/>
+            </properties>
+            <code id="29">/*
+ * Tilia Labs Inc.
+ * Copyright (c) 2012-*, All Rights Reserved
+ *
+ * Derived Sheet Mark
+ *
+ * This script mark compares the layout sheet size to a list of potential 
+ * parent sheet sizes. After finding a match (or not), it draws a text
+ * mark on the plate with the name of the parent sheet.
+ */
+
+// We currently don&apos;t have an easy way to query the stock sizes, 
+// so instead we are using this array to store potential parent 
+// sheet sizes
+var stockSizes = [&quot;960x660&quot;, &quot;1130x770&quot;]
+
+function run(context) {
+  // Run checkStockSize function to get original sheet size
+  var originalFormat = checkStockSize(context)
+  // Draw the mark with the information returned from the previous funtion
+  drawMark(originalFormat, context)
+}
+
+function checkStockSize(context) {
+  // Grab the width and height from the context anchor (layout sheet)
+  // and convert to mm and parse as an integer
+  var width= parseInt((context.anchorRect.width / 72 * 25.4))
+  var height = parseInt((context.anchorRect.height / 72 * 25.4))
+  
+  // Look through stocks array defined at top of script to find match
+  for (var stockIndex = 0; stockIndex &lt; stockSizes.length; stockIndex++) {
+    var stock = stockSizes[stockIndex];
+    var stockWidth = parseInt(stock.split(&apos;x&apos;)[0])
+    var stockHeight = parseInt(stock.split(&apos;x&apos;)[1])
+    // Check case if width and height are equal - No derived sheet
+    if ((stockWidth / width == 1) &amp;&amp; (stockHeight / height == 1)) {
+      context.log(&quot;No derived sheet&quot;);
+      return stock + &quot; (Full Sheet)&quot;
+    } // Check case if width or height are half of stock width - Half sheet
+    else if ((stockWidth / width == 2 &amp;&amp; stockHeight / height) == 1 || (stockWidth / height == 2 &amp;&amp; stockHeight / width == 1)) {
+      context.log(&quot;Half sheet&quot;);
+      return stock + &quot; (Half sheet)&quot;
+    } // Check case if width and height are double stock width - Quarter sheet
+    else if ((stockWidth / width == 2 &amp;&amp; stockHeight / height) == 2 || (stockWidth / height == 2 &amp;&amp; stockHeight / width == 2)) {
+      context.log(&quot;Quarter sheet&quot;);
+      return stock + &quot; (Quarter sheet)&quot;
+    } else if (stockIndex&lt;stockSizes.length){
+      context.log(&quot;Not sheet &quot; + stock + &quot;, checking next stock&quot;);
+    }
+  }
+  return width + &quot; x &quot; + height + &quot; (No derived sheet)&quot;
+}
+
+function drawMark(originalFormat, context){
+  // Create a drawable painter from the mark context
+  var painter = new Painter(context.data);
+
+  // Create font object
+  var font = new Font(&quot;Arimo&quot;);
+
+  // Create the text string, font, size, and placement
+  var textString = new Text(&quot;Original Format: &quot; + originalFormat);
+  textString.font = font
+  textString.size = Units.parse(&quot;24pt&quot;);
+  textString.setPoint(Units.parse(&quot;10mm&quot;),Units.parse(&quot;10mm&quot;))
+
+  // Clear the painter to remove any existing colors
+  painter.clearPen();
+  painter.clearBrush();
+  // Set pen tool to stroke the text
+  var brushColor = new Color(0, 0, 0, 100);
+  var brush = new Brush(brushColor);
+  painter.brush = brush
+    
+  // Draw text string on artwork
+  painter.draw(textString);
+}</code>
+         </frozen-asset>
+      </script>
+   </mark>
+</asset-wrapper>
