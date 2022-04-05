@@ -17,6 +17,12 @@ This mark was created to easily identify the parent sheet size from which a deri
 
 ![](https://github.com/tilialabs/tilia-phoenix-scripts/blob/master/Script%20Marks/Derived%20Sheet/derived-sheet-mark.png)
 
+### Bleed Outline Mark
+This mark finds all products on a layout, looks for a custom property "bleedValue", and draws a stroked rectangle around the product, offset by this "bleedValue" in the first ink color of the product.
+
+![](https://github.com/tilialabs/tilia-phoenix-scripts/blob/master/Script%20Marks/Bleed%20Outline/bleed-outline-mark.png)
+
+
 ## Imposition AI
 
 Imposition AI provides the option to run scripts when layout results are applied, providing some powerful tools to evaluate layouts, modify them, and access items within the layouts.

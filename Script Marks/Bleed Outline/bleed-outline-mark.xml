@@ -1,0 +1,127 @@
+<asset-wrapper id="0">
+   <meta-data id="1" os="Mac OS X 10.16" date="Tue Apr 05 16:39:29 EDT 2022">
+      <version id="2" major="8" minor="0" patch="1" type="Release" secondary="1" changeset="d7f419725c57b60df1e6a0f789237f447634a745" date="2022-02-24T08:34:48.647838" revision="0"/>
+   </meta-data>
+   <mark class="com.tilia.core.marks.ScriptMarkAsset" id="3" unique-id="b1ed2275-0181-4464-9d9d-68b928429a03" name="Bleed Outline Mark" created-by="Phoenix" created-on="2022-04-05T16:16:41.363-04:00" modified-by="Phoenix" modified-on="2022-04-05T16:39:23.501-04:00" version="1b821dff-8472-4bdd-a05f-7b76b4954ea9" edit="true" move="true" delete="true" hidden="false" rules-are-global="false" built-in-path="false" markPage="1" anchor="sheet" overprint="false" overprint-mode="Standard" underprint="None" dynamic-custom-mark="false" dynamic-keyword-mapping="false" ignore-technical-inks="true" ignore-varnish-inks="true" pdf-box="TrimBox" clip-option="None" clip-left="0pt" clip-right="0pt" clip-top="0pt" clip-bottom="0pt" x-scale="1.0" y-scale="1.0" layer-name="" double-sided="None">
+      <properties id="4">
+         <map id="5"/>
+      </properties>
+      <rules id="6">
+         <rule id="7" unique-id="8abf3d03-c20d-4c43-aee3-4c742041f4f9" rotation="0.0" rotation-type="in-place">
+            <x id="8" type="XValue" xpoint="Center" ypoint="Bottom" formula="sheet.center+0&quot;"/>
+            <y id="9" type="YValue" xpoint="Left" ypoint="Center" formula="sheet.center+0&quot;"/>
+            <xscale id="10">1.0</xscale>
+            <yscale id="11">1.0</yscale>
+         </rule>
+      </rules>
+      <underprint-color id="12" type="Composite">
+         <components class="java.util.ArrayList" id="13">
+            <component id="14" type="Ink" placeholder-index="0">
+               <ink id="15" refid="b0842956-d58d-4ef0-a521-1d78dfec9a80" type="com.tilia.core.color.TInk"/>
+               <tint id="16">1.0</tint>
+            </component>
+         </components>
+      </underprint-color>
+      <underprint-margins id="17" type="Outside" linked="false">
+         <left id="18">0pt</left>
+         <top id="19">0pt</top>
+         <right id="20">0pt</right>
+         <bottom id="21">0pt</bottom>
+      </underprint-margins>
+      <ink-mappings class="java.util.LinkedList" id="22"/>
+      <keyword-mappings class="java.util.LinkedList" id="23"/>
+      <place-below id="24">false</place-below>
+      <script id="25" refid="5206f33f-073d-4bbd-9a4f-435eb6e620d7" type="com.tilia.core.scripting.ScriptAsset">
+         <frozen-asset class="com.tilia.core.scripting.ScriptAsset" id="26" unique-id="6a007f12-a36a-4d53-b8e6-36500d0e0779" created-on="2022-04-05T16:39:23.446-04:00" version="07a2a6b7-071c-4456-be02-c9515b6b46fc" edit="true" move="true" delete="true" hidden="false" context="None">
+            <properties id="27">
+               <map id="28"/>
+            </properties>
+            <code id="29">/*
+ * Tilia Labs Inc.
+ * Copyright (c) 2012-*, All Rights Reserved
+ *
+ * Offset Mark
+ * Sheet mark designed to create a stroke around the bleed.
+ * Enter the desired width of the stroke in pts in line 13.
+ * The stroke color is defined by the layouts&apos;s first ink
+ *
+ * Created 2021-11-03 by david@tilialabs.com
+ */
+
+var strokeWidth = 5
+var items = [];
+
+function run(context){
+    // Get the jobs api for performing actions on jobs
+	var jobs = context.jobs;
+	var job = context.job;
+
+    // find all products on the layout, this adds them
+    // to the &quot;items&quot; array we can use later
+    var products = findProducts(context,context.root);
+
+    // loop through all products now stored in the items array
+    for (var i=0;i&lt;items.length;i++) {
+        var product = items[i];
+        // get the bleed value from the bleedValue custom property
+		var bleed = jobs.productProperty(job.id, product.name, &quot;bleedValue&quot;);
+		// if property not set or doesn&apos;t exist set default bleed
+		if (bleed == &quot;&quot; || bleed == null) {
+			// set default bleed in inches
+			bleed = 0.125;
+		}
+
+		// Create new Painter to draw with
+      	var painter = new Painter(context.data);
+	     // Clear the pen so there will be no stroke
+        painter.clearPen();
+        painter.clearBrush();
+		
+		// Create penColor from first color of layout
+		var penColor = context.surfaceColor(1);
+		// Create pen with penColor and thickness
+		var pen = new Pen(penColor);
+		pen.thickness = strokeWidth
+		painter.pen = pen
+        // Draw shape
+        painter.draw(product.globalRect.adjusted(bleed*72));
+    }
+    return true;
+}
+
+function findProducts(context,item) {
+    // check to see if the input is a product, if so add to &quot;items&quot;
+    if (item.type == &quot;Product&quot;) {
+        items.push(item)
+    }
+    // loop through to find child items of the input item
+    for (var i = 0; i &lt; item.children.size(); i++) {
+	    // Get item type
+		var type = item.children.get(i).type;
+		// if item is a mark, ignore
+		if (type == &quot;Mark&quot;) {
+		}
+		// if item is a group of products, push each child item to &quot;items&quot; array
+		else if (type == &quot;Group&quot;) {
+			for (var j=0;j&lt;item.children.get(i).children.size();j++) {
+				if (item.children.get(i).children.get(j).type == &quot;Product&quot;) {
+					items.push(item.children.get(i).children.get(j))
+				}
+			}
+		}
+		// if item is a product, push to our items array
+		else if (type == &quot;Product&quot;) {
+			items.push(item.children.get(i))
+		}
+        // otherwise if there are children of this child,
+        // put them back into this function to find their children
+		else if (item.children.get(i).children.size() &lt; 0) {
+			findProducts(context,item.children.get(i))
+		}
+    }
+    return;
+  }</code>
+         </frozen-asset>
+      </script>
+   </mark>
+</asset-wrapper>
