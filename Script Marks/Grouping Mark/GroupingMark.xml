@@ -1,0 +1,314 @@
+<asset-wrapper id="0">
+   <meta-data id="1" os="Mac OS X 10.16" date="Tue Oct 11 15:24:19 EDT 2022">
+      <version id="2" major="8" minor="0" patch="5" type="Release" secondary="1" changeset="dfc897e2bb691f37fd99a671c98330b43682b583" date="2022-09-19T13:25:34.334714" revision="0"/>
+   </meta-data>
+   <mark class="com.tilia.core.marks.ScriptMarkAsset" id="3" unique-id="3d37d7f2-8b19-4dab-bb94-a5222c4ae2a3" name="WallaceGroupingMark" created-by="Phoenix" created-on="2022-10-11T15:23:51.322-04:00" modified-by="Phoenix" modified-on="2022-10-11T15:24:04.058-04:00" version="9b397451-71d7-4129-9575-9896d6e800a5" edit="true" move="true" delete="true" hidden="false" rules-are-global="false" built-in-path="false" markPage="1" anchor="sheet" overprint="false" overprint-mode="Standard" underprint="None" dynamic-custom-mark="false" dynamic-keyword-mapping="false" ignore-technical-inks="true" ignore-varnish-inks="true" pdf-box="TrimBox" clip-option="None" clip-left="0pt" clip-right="0pt" clip-top="0pt" clip-bottom="0pt" x-scale="1.0" y-scale="1.0" layer-name="" double-sided="None">
+      <properties id="4">
+         <map id="5">
+            <property key="Bleed">
+               <object class="com.tilia.core.gang.props.DoubleProperty" id="6" name="Bleed">
+                  <value class="java.lang.Double" id="7">0.125</value>
+                  <children id="8">
+                     <map id="9"/>
+                  </children>
+               </object>
+            </property>
+            <property key="Margin">
+               <object class="com.tilia.core.gang.props.DoubleProperty" id="10" name="Margin">
+                  <value class="java.lang.Double" id="11">0.25</value>
+                  <children id="12">
+                     <map id="13"/>
+                  </children>
+               </object>
+            </property>
+            <property key="Stroke">
+               <object class="com.tilia.core.gang.props.DoubleProperty" id="14" name="Stroke">
+                  <value class="java.lang.Double" id="15">13.5</value>
+                  <children id="16">
+                     <map id="17"/>
+                  </children>
+               </object>
+            </property>
+         </map>
+      </properties>
+      <rules id="18">
+         <rule id="19" unique-id="6301508d-0a85-4521-8f61-2b3f54a0f2f8" rotation="0.0" rotation-type="in-place">
+            <x id="20" type="XValue" xpoint="Center" ypoint="Bottom" formula="sheet.center+0&quot;"/>
+            <y id="21" type="YValue" xpoint="Left" ypoint="Center" formula="sheet.center+0&quot;"/>
+            <xscale id="22">1.0</xscale>
+            <yscale id="23">1.0</yscale>
+         </rule>
+      </rules>
+      <underprint-color id="24" type="Composite">
+         <components class="java.util.ArrayList" id="25">
+            <component id="26" type="Ink" placeholder-index="0">
+               <ink id="27" refid="b0842956-d58d-4ef0-a521-1d78dfec9a80" type="com.tilia.core.color.TInk">
+                  <frozen-asset class="com.tilia.core.color.TInk" id="28" unique-id="b0842956-d58d-4ef0-a521-1d78dfec9a80" name="Opaque White" created-on="2015-02-05T18:24:13.000-05:00" modified-on="2015-02-05T18:24:13.000-05:00" version="f3529e31-823e-4705-ade7-cdf86d27bfdd" edit="true" move="true" delete="true" hidden="false" type="normal">
+                     <properties id="29">
+                        <map id="30"/>
+                     </properties>
+                     <color id="31" values="1.0" alpha="0.0">
+                        <colorspace id="32" type="Separation" number-of-components="1">
+                           <devicen-names length="1" id="33">
+                              <string id="34">Opaque White</string>
+                           </devicen-names>
+                           <alternate-colorspace id="35" type="DeviceCMYK" number-of-components="4"/>
+                           <tint-transform id="36" type="Type2">
+                              <domain length="2" id="37">
+                                 <double id="38">0.0</double>
+                                 <double id="39">1.0</double>
+                              </domain>
+                              <range length="8" id="40">
+                                 <double id="41">0.0</double>
+                                 <double id="42">1.0</double>
+                                 <double id="43">0.0</double>
+                                 <double id="44">1.0</double>
+                                 <double id="45">0.0</double>
+                                 <double id="46">1.0</double>
+                                 <double id="47">0.0</double>
+                                 <double id="48">1.0</double>
+                              </range>
+                              <C0 length="4" id="49">
+                                 <double id="50">0.0</double>
+                                 <double id="51">0.0</double>
+                                 <double id="52">0.0</double>
+                                 <double id="53">0.0</double>
+                              </C0>
+                              <C1 length="4" id="54">
+                                 <double id="55">0.01</double>
+                                 <double id="56">0.02</double>
+                                 <double id="57">0.08</double>
+                                 <double id="58">0.0</double>
+                              </C1>
+                              <N id="59">1.0</N>
+                           </tint-transform>
+                        </colorspace>
+                     </color>
+                  </frozen-asset>
+               </ink>
+               <tint id="60">1.0</tint>
+            </component>
+         </components>
+      </underprint-color>
+      <underprint-margins id="61" type="Outside" linked="false">
+         <left id="62">0pt</left>
+         <top id="63">0pt</top>
+         <right id="64">0pt</right>
+         <bottom id="65">0pt</bottom>
+      </underprint-margins>
+      <ink-mappings class="java.util.LinkedList" id="66"/>
+      <keyword-mappings class="java.util.LinkedList" id="67"/>
+      <place-below id="68">false</place-below>
+      <script id="69" refid="a1e5e7b9-0cc9-48b3-96c0-08ea329e1a8a" type="com.tilia.core.scripting.ScriptAsset">
+         <frozen-asset class="com.tilia.core.scripting.ScriptAsset" id="70" unique-id="0b5ebb97-ceb3-42e4-a59e-c770b6c45eae" created-on="2022-10-11T15:24:04.005-04:00" version="6b20b723-a04e-428f-a5f2-6a94ef993b7a" edit="true" move="true" delete="true" hidden="false" context="None">
+            <properties id="71">
+               <map id="72"/>
+            </properties>
+            <code id="73">/*
+ * Tilia Labs Inc.
+ * Copyright (c) 2012-*, All Rights Reserved
+ *
+ * Wallace Grouping Mark
+ *
+ * This script sets a filled shape mark around a group of products
+ */
+function run(context) {
+  context.log(&quot;&quot;);
+  context.log(&quot;New Run&quot;);
+  var jobs = context.jobs;
+  var job = context.job;
+
+  var groups = {};
+
+  var userMargin = context.markProps.values().toArray()[1];
+  if (!userMargin || userMargin == &quot;&quot;) {
+    var margin = 0.25;
+  } else {
+    var margin = userMargin;
+  }
+
+  var userStroke = context.markProps.values().toArray()[2];
+  if (!userStroke || userStroke == &quot;&quot;) {
+    var stroke = 13.5;
+  } else {
+    var stroke = userStroke;
+  }
+
+  margin = margin * 72;
+
+  var gap = margin;
+
+  var userBleed = context.markProps.values().toArray()[0];
+  if (!userBleed || userBleed == &quot;&quot;) {
+    var bleed = 0.125;
+  } else {
+    var bleed = userBleed;
+  }
+  bleed = bleed * 72;
+
+  // Find the products
+  var products = findProducts(context.root, false, context);
+  var groupNum = &quot;&quot;;
+  for (var i = 0; i &lt; products.length; i++) {
+    var product = products[i];
+    var group = jobs.productProperty(job.id, product.name, &quot;Group&quot;);
+    if (group != groupNum) {
+      groups[group] = [
+        product.globalRect.left,
+        product.globalRect.top,
+        product.globalRect.right,
+        product.globalRect.bottom,
+      ];
+      groupNum = group;
+    }
+    if (product.globalRect.left &lt; groups[group][0]) {
+      groups[group][0] = product.globalRect.left;
+    }
+    if (product.globalRect.top &gt; groups[group][1]) {
+      groups[group][1] = product.globalRect.top;
+    }
+    if (product.globalRect.right &gt; groups[group][2]) {
+      groups[group][2] = product.globalRect.right;
+    }
+    if (product.globalRect.bottom &lt; groups[group][3]) {
+      groups[group][3] = product.globalRect.bottom;
+    }
+  }
+  if (Object.keys(groups).length &gt; 1) {
+    var hGapTotal =
+      groups[Object.keys(groups)[0]][2] - groups[Object.keys(groups)[1]][2];
+    var vGapTotal =
+      groups[Object.keys(groups)[0]][1] - groups[Object.keys(groups)[1]][1];
+    if (vGapTotal == 0) {
+      context.log(&quot;Vertical&quot;);
+      var vGap = 0;
+      var hGap =
+        groups[Object.keys(groups)[0]][2] - groups[Object.keys(groups)[1]][0];
+    } else {
+      context.log(&quot;Horizontal&quot;);
+      var vGap =
+        groups[Object.keys(groups)[0]][3] - groups[Object.keys(groups)[1]][1];
+      var hGap = 0;
+    }
+    context.log(&quot;HGAP: &quot; + hGap + &quot;  -  VGAP: &quot; + vGap);
+  }
+
+  context.log(&quot;groups: &quot; + Object.keys(groups));
+  for (var i = 0; i &lt; Object.keys(groups).length; i++) {
+    var groupName = Object.keys(groups)[i];
+    var group = groups[groupName];
+    context.log(&quot;Group &quot; + groupName + &quot;:&quot;);
+    context.log(group);
+
+    var groupWidth = group[2] - group[0];
+    var groupHeight = group[1] - group[3];
+
+    var painter = new Painter(context.data);
+    // Create spot color to be used in mark
+    // var ink = new Color(1, 0, 0, 0);
+    var ink = calculateInk(groupName);
+    // Clear the pen so there will be no stroke
+    var pen = new Pen(ink);
+    pen.thickness = stroke;
+    painter.clearPen();
+    painter.clearBrush();
+    // Set brush (fill) color
+    painter.setPen(pen);
+
+    //Set bounds for mark and draw each piece
+    var groupRect = new Rect(
+      group[0] - margin,
+      group[3] - margin - vGap / 2,
+      groupWidth + 2 * margin + Math.abs(hGap) / 2,
+      groupHeight + 2 * margin + vGap / 2
+    );
+    painter.draw(groupRect);
+
+    var swatchRect = new Rect(
+      group[2] - 72 + margin + Math.abs(hGap) / 2,
+      group[3] - margin - vGap / 2,
+      72,
+      72
+    );
+    painter.clearPen();
+    painter.setBrush(ink);
+    painter.draw(swatchRect);
+
+    painter.clearBrush();
+    painter.clearPen();
+    // Create CMYK stroke color
+    var painter = new Painter(context.data);
+    var penColor = new Color(0, 0, 0, 100);
+    var penFill = new Color(0, 0, 0, 0);
+
+    // Set the pen tool settings so the text gets stroked
+    var pen = new Pen(penColor);
+    pen.thickness = Units.parse(&quot;1pt&quot;);
+    painter.pen = pen;
+    painter.setBrush(penFill);
+
+    // // Create the text string
+    var textString = new Text(groupName);
+    textString.size = Units.parse(&quot;40pt&quot;);
+    textString.point = new Point(
+      swatchRect.rect.left +
+        (swatchRect.rect.width - textString.rect.width) / 2,
+      swatchRect.rect.bottom +
+        (swatchRect.rect.height - textString.rect.height) / 2
+    );
+
+    if (vGapTotal == 0) {
+      painter.save();
+      var transform = new Transform();
+      transform.translate(swatchRect.center);
+      transform.rotateDeg(90);
+      transform.translate(swatchRect.center.reversed);
+      painter.combine(transform);
+      painter.draw(textString.path);
+      painter.restore();
+    } else {
+      painter.draw(textString);
+    }
+  }
+  return true;
+}
+/*
+ * Search for the first group in the layout
+ */
+function findProducts(item, child, context) {
+  var products = [];
+  if (item.type === Type.Product) {
+    if (child == true) {
+      return item;
+    }
+    products.push(item);
+  }
+  var children = item.children;
+  for (var index = 0; index &lt; children.size(); index++) {
+    var child = findProducts(children.get(index), true, context);
+    if (child.type === Type.Product) {
+      products.push(child);
+    }
+  }
+  return products;
+}
+
+function calculateInk(groupNum) {
+  var paddedNum = (&quot;00000&quot; + groupNum).slice(-3);
+  var str = Math.exp(
+    Math.exp(paddedNum).toString().replace(&quot;.&quot;, &quot;&quot;).toString().substring(0, 3)
+  )
+    .toString()
+    .replace(&quot;.&quot;, &quot;&quot;)
+    .replace(&quot;e+&quot;, &quot;&quot;);
+  var cyan = str[0];
+  var magenta = str[1];
+  var yellow = str[2];
+  var ink = new Color(cyan / 10, magenta / 10, yellow / 10, 0);
+  return ink;
+}</code>
+            <script-file id="74">/Users/davidplatt/Desktop/WallaceGroupMark.js</script-file>
+         </frozen-asset>
+      </script>
+   </mark>
+</asset-wrapper>

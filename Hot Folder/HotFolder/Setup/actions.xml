@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phoenix-actions version="1.0" file-type="pdf,ai">
+    <create-job id="1">
+        <create-job-resource>
+            <default-bleed>3mm</default-bleed>
+            <units>mm</units>
+        </create-job-resource>
+    </create-job>
+    <add-products id="2" />
+    <plan id="3">
+        <plan-resource>
+            <presses>
+                <press>CD 102</press>
+            </presses>
+            <stop-minutes>0</stop-minutes>
+        </plan-resource>
+    </plan>
+    <export-pdf id="4">
+        <export-pdf-resource>
+            <preset>Per Layout</preset>
+        </export-pdf-resource>
+    </export-pdf>
+    <save-job id="5"/>
+    <export-pdf-report id="6"/>
+</phoenix-actions>
