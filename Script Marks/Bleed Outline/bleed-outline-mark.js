@@ -46,7 +46,7 @@ function run(context){
 		pen.thickness = strokeWidth
 		painter.pen = pen
         // Draw shape
-        painter.draw(product.globalRect.adjusted(bleed*72));
+        painter.draw(new Rect(product.globalRect).adjusted(bleed*72));
     }
     return true;
 }
