@@ -13,19 +13,19 @@
 var strokeWidth = 5
 var items = [];
 
-function run(context) {
-	// Get the jobs api for performing actions on jobs
+function run(context){
+    // Get the jobs api for performing actions on jobs
 	var jobs = context.jobs;
 	var job = context.job;
 
-	// find all products on the layout, this adds them
-	// to the "items" array we can use later
-	var products = findProducts(context, context.root);
+    // find all products on the layout, this adds them
+    // to the "items" array we can use later
+    var products = findProducts(context,context.root);
 
-	// loop through all products now stored in the items array
-	for (var i = 0; i < items.length; i++) {
-		var product = items[i];
-		// get the bleed value from the bleedValue custom property
+    // loop through all products now stored in the items array
+    for (var i=0;i<items.length;i++) {
+        var product = items[i];
+        // get the bleed value from the bleedValue custom property
 		var bleed = jobs.productProperty(job.id, product.name, "bleedValue");
 		// if property not set or doesn't exist set default bleed
 		if (bleed == "" || bleed == null) {
@@ -34,38 +34,38 @@ function run(context) {
 		}
 
 		// Create new Painter to draw with
-		var painter = new Painter(context.data);
-		// Clear the pen so there will be no stroke
-		painter.clearPen();
-		painter.clearBrush();
-
+      	var painter = new Painter(context.data);
+	     // Clear the pen so there will be no stroke
+        painter.clearPen();
+        painter.clearBrush();
+		
 		// Create penColor from first color of layout
 		var penColor = context.surfaceColor(1);
 		// Create pen with penColor and thickness
 		var pen = new Pen(penColor);
 		pen.thickness = strokeWidth
 		painter.pen = pen
-		// Draw shape
-		painter.draw(new Rect(product.globalRect).adjusted(bleed * 72));
-	}
-	return true;
+        // Draw shape
+        painter.draw(new Rect(product.globalRect).adjusted(bleed*72));
+    }
+    return true;
 }
 
-function findProducts(context, item) {
-	// check to see if the input is a product, if so add to "items"
-	if (item.type == "Product") {
-		items.push(item)
-	}
-	// loop through to find child items of the input item
-	for (var i = 0; i < item.children.size(); i++) {
-		// Get item type
+function findProducts(context,item) {
+    // check to see if the input is a product, if so add to "items"
+    if (item.type == "Product") {
+        items.push(item)
+    }
+    // loop through to find child items of the input item
+    for (var i = 0; i < item.children.size(); i++) {
+	    // Get item type
 		var type = item.children.get(i).type;
 		// if item is a mark, ignore
 		if (type == "Mark") {
 		}
 		// if item is a group of products, push each child item to "items" array
 		else if (type == "Group") {
-			for (var j = 0; j < item.children.get(i).children.size(); j++) {
+			for (var j=0;j<item.children.get(i).children.size();j++) {
 				if (item.children.get(i).children.get(j).type == "Product") {
 					items.push(item.children.get(i).children.get(j))
 				}
@@ -75,11 +75,11 @@ function findProducts(context, item) {
 		else if (type == "Product") {
 			items.push(item.children.get(i))
 		}
-		// otherwise if there are children of this child,
-		// put them back into this function to find their children
+        // otherwise if there are children of this child,
+        // put them back into this function to find their children
 		else if (item.children.get(i).children.size() < 0) {
-			findProducts(context, item.children.get(i))
+			findProducts(context,item.children.get(i))
 		}
-	}
-	return;
-}
+    }
+    return;
+  }
